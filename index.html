@@ -602,6 +602,181 @@
     .form-grid, .modal-grid { grid-template-columns: 1fr; }
     .header-stats { gap: 12px; }
   }
+
+  /* ── DOCUMENTS PANEL ── */
+  .doc-tabs {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 28px;
+    border-bottom: 2px solid var(--stone);
+    padding-bottom: 0;
+  }
+  .doc-tab {
+    padding: 10px 20px;
+    border: none;
+    border-bottom: 3px solid transparent;
+    background: none;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--muted);
+    cursor: pointer;
+    margin-bottom: -2px;
+    transition: all 0.15s;
+  }
+  .doc-tab:hover { color: var(--ink); }
+  .doc-tab.active { color: var(--rust); border-bottom-color: var(--rust); }
+
+  .doc-panel-section { animation: slideDown 0.2s ease; }
+  .doc-section-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 20px;
+    color: var(--ink);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+  }
+  .doc-hint {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    color: var(--muted);
+    font-weight: 400;
+  }
+
+  /* templates */
+  .templates-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 16px; }
+  .template-card {
+    background: white;
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    padding: 20px;
+    cursor: pointer;
+    transition: border-color 0.15s, box-shadow 0.15s;
+    position: relative;
+  }
+  .template-card:hover { border-color: var(--rust); box-shadow: 0 2px 12px rgba(184,76,42,0.1); }
+  .template-card.copied { border-color: var(--green); }
+  .template-name { font-weight: 700; font-size: 14px; margin-bottom: 4px; color: var(--ink); }
+  .template-tag {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+  }
+  .template-tag.email { background: #e8f0fe; color: #1a5a99; }
+  .template-tag.proposal { background: #f3e8ff; color: #6b3fa0; }
+  .template-tag.followup { background: #fff3e0; color: #b84c2a; }
+  .template-preview {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.5;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .template-copy-hint {
+    position: absolute;
+    top: 12px; right: 12px;
+    font-size: 10px;
+    color: var(--muted);
+    opacity: 0;
+    transition: opacity 0.15s;
+  }
+  .template-card:hover .template-copy-hint { opacity: 1; }
+  .copied-toast {
+    position: absolute;
+    top: 12px; right: 12px;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--green);
+  }
+
+  /* generator */
+  .generator-form { background: white; border: 1.5px solid var(--border); border-radius: 10px; padding: 24px; margin-bottom: 24px; }
+  .gen-row { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 14px; margin-bottom: 14px; }
+  .gen-field { display: flex; flex-direction: column; gap: 5px; }
+  .gen-field.full { grid-column: 1/-1; }
+  .gen-field label { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+  .gen-field input, .gen-field select { font-family: 'DM Sans', sans-serif; font-size: 13px; padding: 8px 11px; border: 1.5px solid var(--border); border-radius: 6px; background: white; color: var(--text); outline: none; transition: border-color 0.15s; }
+  .gen-field input:focus, .gen-field select:focus { border-color: var(--rust); }
+  .gen-btn {
+    padding: 10px 24px;
+    background: var(--rust);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+  .gen-btn:hover { background: var(--rust-light); }
+  .gen-btn:disabled { background: var(--border); cursor: not-allowed; }
+  .gen-output-header { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+  .gen-output-label { font-weight: 700; font-size: 14px; flex: 1; }
+  .copy-btn { padding: 6px 14px; background: var(--ink); color: white; border: none; border-radius: 6px; font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 600; cursor: pointer; }
+  .copy-btn:hover { opacity: 0.85; }
+  .gen-result {
+    background: white;
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    padding: 24px;
+    font-size: 14px;
+    line-height: 1.7;
+    white-space: pre-wrap;
+    color: var(--ink);
+  }
+  .gen-loading { text-align: center; padding: 40px; color: var(--muted); font-size: 15px; }
+
+  /* sent log */
+  .sent-item {
+    background: white;
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    padding: 16px 20px;
+    margin-bottom: 10px;
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+  .sent-item-icon { font-size: 22px; flex-shrink: 0; margin-top: 2px; }
+  .sent-item-body { flex: 1; }
+  .sent-item-title { font-weight: 700; font-size: 14px; margin-bottom: 3px; }
+  .sent-item-meta { font-size: 12px; color: var(--muted); margin-bottom: 4px; }
+  .sent-item-notes { font-size: 13px; color: var(--ink); line-height: 1.5; }
+  .sent-item-delete { font-size: 18px; cursor: pointer; color: var(--muted); flex-shrink: 0; opacity: 0.4; transition: opacity 0.15s; }
+  .sent-item-delete:hover { opacity: 1; color: var(--red); }
+  .sent-tag { display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 2px 8px; border-radius: 10px; background: #e8f0fe; color: #1a5a99; margin-right: 6px; }
+
+  /* files */
+  .file-item {
+    background: white;
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    padding: 16px 20px;
+    margin-bottom: 10px;
+    display: flex;
+    gap: 16px;
+    align-items: center;
+  }
+  .file-icon { font-size: 26px; flex-shrink: 0; }
+  .file-body { flex: 1; }
+  .file-name { font-weight: 700; font-size: 14px; margin-bottom: 2px; }
+  .file-meta { font-size: 12px; color: var(--muted); }
+  .file-link { font-size: 12px; color: var(--rust); text-decoration: none; font-weight: 600; }
+  .file-link:hover { text-decoration: underline; }
+  .file-delete { font-size: 18px; cursor: pointer; color: var(--muted); opacity: 0.4; transition: opacity 0.15s; }
+  .file-delete:hover { opacity: 1; color: var(--red); }
+
+  .empty-state { text-align: center; padding: 48px; color: var(--muted); font-size: 14px; border: 2px dashed var(--border); border-radius: 10px; }
+
 </style>
 </head>
 <body>
@@ -645,7 +820,9 @@
     <button class="filter-btn real-estate"   onclick="filterCards('real-estate', this)">🏠 Real Estate</button>
     <div class="controls-right">
       <span class="save-status" id="saveStatus">✓ Saved</span>
-      <button class="add-btn" onclick="openModal()">+ Add Prospect</button>
+      <button class="add-btn" id="docsTabBtn" onclick="switchTab('docs', this)">📁 Documents</button>
+      <button class="add-btn" id="prospectsTabBtn" onclick="switchTab('prospects', this)" style="display:none">← Prospects</button>
+      <button class="add-btn" id="addProspectBtn" onclick="openModal()">+ Add Prospect</button>
       <button class="save-btn" onclick="saveAll()">💾 Save All to Sheets</button>
     </div>
   </div>
@@ -1793,6 +1970,135 @@
     </div>
   </div>
 
+<!-- ═══════════════════════════════════════════════
+     DOCUMENTS PANEL
+════════════════════════════════════════════════ -->
+<div id="docsPanel" style="display:none">
+
+  <!-- ── TABS ── -->
+  <div class="doc-tabs">
+    <button class="doc-tab active" onclick="switchDocTab('templates', this)">📋 Templates</button>
+    <button class="doc-tab" onclick="switchDocTab('generator', this)">✉️ Email Generator</button>
+    <button class="doc-tab" onclick="switchDocTab('sent', this)">📬 Sent Log</button>
+    <button class="doc-tab" onclick="switchDocTab('files', this)">📎 Files</button>
+  </div>
+
+  <!-- ── TEMPLATES ── -->
+  <div id="docTab-templates" class="doc-panel-section">
+    <div class="doc-section-title">Reusable Templates <span class="doc-hint">Click any template to copy it to your clipboard</span></div>
+    <div class="templates-grid" id="templatesGrid"></div>
+  </div>
+
+  <!-- ── EMAIL GENERATOR ── -->
+  <div id="docTab-generator" class="doc-panel-section" style="display:none">
+    <div class="doc-section-title">AI-Powered Email Generator <span class="doc-hint">Generates a custom outreach email for any prospect</span></div>
+    <div class="generator-form">
+      <div class="gen-row">
+        <div class="gen-field">
+          <label>Prospect Name / Organization</label>
+          <input type="text" id="gen-prospect" placeholder="e.g. Connie's Pizza" list="prospectList">
+          <datalist id="prospectList"></datalist>
+        </div>
+        <div class="gen-field">
+          <label>Contact Name</label>
+          <input type="text" id="gen-contact" placeholder="e.g. Jim Stolfe">
+        </div>
+        <div class="gen-field">
+          <label>Package to Pitch</label>
+          <select id="gen-package">
+            <option value="Business Membership ($100)">Business Membership — $100</option>
+            <option value="Map Spot ($150)">Map Spot — $150</option>
+            <option value="Map Bundle ($275)">Map Bundle — $275</option>
+            <option value="Flyer Sponsorship ($200)">Flyer Sponsorship — $200</option>
+            <option value="Corporate Sponsorship ($2,500)" selected>Corporate Sponsorship — $2,500</option>
+            <option value="Large Corporate Sponsorship ($3,000+)">Large Corporate — $3,000+</option>
+          </select>
+        </div>
+        <div class="gen-field">
+          <label>Tone</label>
+          <select id="gen-tone">
+            <option value="warm and community-focused">Warm & Community</option>
+            <option value="professional and concise">Professional & Concise</option>
+            <option value="enthusiastic and energetic">Enthusiastic</option>
+            <option value="brief and casual">Brief & Casual</option>
+          </select>
+        </div>
+      </div>
+      <div class="gen-row">
+        <div class="gen-field full">
+          <label>Notes about this prospect (optional)</label>
+          <input type="text" id="gen-notes" placeholder="e.g. They already participate in Third Friday, owner is Maria">
+        </div>
+      </div>
+      <button class="gen-btn" onclick="generateEmail()">✉️ Generate Email</button>
+    </div>
+    <div id="gen-output" style="display:none">
+      <div class="gen-output-header">
+        <span class="gen-output-label">Generated Email</span>
+        <button class="copy-btn" onclick="copyGenerated()">Copy to Clipboard</button>
+        <button class="copy-btn" style="background:var(--sage)" onclick="logSentEmail()">📬 Log as Sent</button>
+      </div>
+      <div id="gen-result" class="gen-result"></div>
+    </div>
+    <div id="gen-loading" style="display:none" class="gen-loading">✨ Generating your email…</div>
+  </div>
+
+  <!-- ── SENT LOG ── -->
+  <div id="docTab-sent" class="doc-panel-section" style="display:none">
+    <div class="doc-section-title">Sent Log <span class="doc-hint">Track which outreach was sent to whom and when</span></div>
+    <button class="gen-btn" style="margin-bottom:20px" onclick="openSentModal()">+ Log Outreach Manually</button>
+    <div id="sentLogList">
+      <div class="empty-state">No outreach logged yet. Use the Email Generator or add manually.</div>
+    </div>
+  </div>
+
+  <!-- ── FILES ── -->
+  <div id="docTab-files" class="doc-panel-section" style="display:none">
+    <div class="doc-section-title">Files & Documents <span class="doc-hint">Store links to Google Drive files, proposals, and PDFs</span></div>
+    <button class="gen-btn" style="margin-bottom:20px" onclick="openFileModal()">+ Add File Link</button>
+    <div id="filesList">
+      <div class="empty-state">No files added yet. Paste a Google Drive or Dropbox link to any proposal, contract, or PDF.</div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ── SENT LOG MODAL ── -->
+<div id="sentModalOverlay" class="modal-overlay" onclick="if(event.target===this)closeSentModal()" style="display:none">
+  <div class="modal-box">
+    <div class="modal-title">Log Outreach</div>
+    <div class="form-grid">
+      <div class="form-field"><label>Prospect / Organization</label><input type="text" id="sl-prospect" placeholder="e.g. Connie's Pizza" list="prospectList2"><datalist id="prospectList2"></datalist></div>
+      <div class="form-field"><label>Contact Name</label><input type="text" id="sl-contact" placeholder="Name"></div>
+      <div class="form-field"><label>Type</label><select id="sl-type"><option>Email</option><option>Phone Call</option><option>In-Person Visit</option><option>Proposal Sent</option><option>Follow-Up</option></select></div>
+      <div class="form-field"><label>Date</label><input type="date" id="sl-date"></div>
+      <div class="form-field full"><label>Notes / Summary</label><textarea id="sl-notes" placeholder="What was discussed, any response..."></textarea></div>
+    </div>
+    <div style="display:flex;gap:10px;margin-top:16px">
+      <button class="gen-btn" onclick="saveSentLog()">Save</button>
+      <button class="add-btn" onclick="closeSentModal()">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<!-- ── FILE MODAL ── -->
+<div id="fileModalOverlay" class="modal-overlay" onclick="if(event.target===this)closeFileModal()" style="display:none">
+  <div class="modal-box">
+    <div class="modal-title">Add File Link</div>
+    <div class="form-grid">
+      <div class="form-field"><label>File Name</label><input type="text" id="fm-name" placeholder="e.g. BAC Sponsorship Proposal 2026"></div>
+      <div class="form-field"><label>Linked Prospect (optional)</label><input type="text" id="fm-prospect" placeholder="e.g. Byline Bank" list="prospectList3"><datalist id="prospectList3"></datalist></div>
+      <div class="form-field"><label>Type</label><select id="fm-type"><option>Proposal</option><option>Contract</option><option>Marketing Email</option><option>Invoice</option><option>Press Kit</option><option>Other</option></select></div>
+      <div class="form-field full"><label>URL (Google Drive, Dropbox, etc.)</label><input type="url" id="fm-url" placeholder="https://drive.google.com/..."></div>
+      <div class="form-field full"><label>Notes</label><textarea id="fm-notes" placeholder="Any context about this file..."></textarea></div>
+    </div>
+    <div style="display:flex;gap:10px;margin-top:16px">
+      <button class="gen-btn" onclick="saveFile()">Save</button>
+      <button class="add-btn" onclick="closeFileModal()">Cancel</button>
+    </div>
+  </div>
+</div>
+
 </main>
 
 <footer>
@@ -1985,18 +2291,27 @@
     });
   }
 
-  async function sheetSaveRow(rowData) {
-    await fetch(APPS_SCRIPT_URL, { method: 'POST', mode: 'no-cors', body: JSON.stringify(rowData) });
+  async function sheetPost(data) {
+    await fetch(APPS_SCRIPT_URL, { method: 'POST', mode: 'no-cors', body: JSON.stringify(data) });
   }
 
-  // ── SAVE / LOAD ──
-  let saveTimers = {};
+  async function sheetReadSheet(sheetName) {
+    return new Promise((resolve, reject) => {
+      const cb = 'cb_' + sheetName + '_' + Date.now();
+      const script = document.createElement('script');
+      script.src = APPS_SCRIPT_URL + '?sheet=' + sheetName + '&callback=' + cb;
+      window[cb] = data => { delete window[cb]; script.remove(); resolve(data.rows || []); };
+      script.onerror = reject;
+      document.body.appendChild(script);
+    });
+  }
+
   function saveCard(card) {
     const id = card.dataset.id;
     clearTimeout(saveTimers[id]);
     showSaveStatus('saving');
     saveTimers[id] = setTimeout(async () => {
-      try { await sheetSaveRow(getCardData(card)); showSaveStatus('saved'); }
+      try { await sheetPost({ action: 'upsertProspect', ...getCardData(card) }); showSaveStatus('saved'); }
       catch(e) { console.error('Save error:', e); showSaveStatus('error'); }
     }, 1500);
   }
@@ -2005,7 +2320,7 @@
     showSaveStatus('saving');
     try {
       for (const card of document.querySelectorAll('.card[data-category]'))
-        await sheetSaveRow(getCardData(card));
+        await sheetPost({ action: 'upsertProspect', ...getCardData(card) });
       showSaveStatus('saved');
     } catch(e) { console.error('Save all error:', e); showSaveStatus('error'); }
   }
@@ -2104,6 +2419,269 @@
   // ── INIT ──
   document.querySelectorAll('.category-section').forEach(s => s.classList.add('collapsed'));
   loadData();
+
+  // ══════════════════════════════════════════
+  //  DOCUMENTS PANEL
+  // ══════════════════════════════════════════
+
+  // ── TAB SWITCHING ──
+  function switchTab(tab, btn) {
+    const isProspects = tab === 'prospects';
+    document.getElementById('docsPanel').style.display = isProspects ? 'none' : 'block';
+    document.querySelectorAll('main > *:not(#docsPanel)').forEach(el => el.style.display = isProspects ? '' : 'none');
+    document.getElementById('docsTabBtn').style.display      = isProspects ? '' : 'none';
+    document.getElementById('prospectsTabBtn').style.display = isProspects ? 'none' : '';
+    document.getElementById('addProspectBtn').style.display  = isProspects ? '' : 'none';
+    if (!isProspects) { populateProspectDatalist(); renderTemplates(); loadSentLog(); loadFiles(); }
+  }
+
+  function switchDocTab(tab, btn) {
+    document.querySelectorAll('.doc-tab').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    ['templates','generator','sent','files'].forEach(t => {
+      const el = document.getElementById('docTab-' + t);
+      if (el) el.style.display = t === tab ? '' : 'none';
+    });
+  }
+
+  // ── PROSPECT DATALIST ──
+  function populateProspectDatalist() {
+    const names = [...document.querySelectorAll('.card[data-category] .card-name')].map(el => el.textContent.trim());
+    ['prospectList','prospectList2','prospectList3'].forEach(id => {
+      const dl = document.getElementById(id);
+      if (dl) dl.innerHTML = names.map(n => `<option value="${n}">`).join('');
+    });
+  }
+
+  // ── TEMPLATES ──
+  const TEMPLATES = [
+    {
+      name: 'Initial Outreach — Corporate ($2,500)',
+      tag: 'email',
+      body: `Subject: Partnership Opportunity — Third Friday Art Walk · Bridgeport\n\nHi [Name],\n\nMy name is Takako Konishi, and I'm the founder and director of the Bridgeport Artist Community (BAC), a registered Illinois nonprofit organizing the Third Friday Art Walk in Bridgeport.\n\nEach month, Third Friday brings 400–600 engaged residents and visitors to galleries, restaurants, and businesses throughout the neighborhood. We're reaching out to [Organization] because we believe your presence in the Bridgeport community makes you a natural partner.\n\nOur Corporate Sponsorship ($2,500) includes:\n• Prominent placement on the Third Friday printed and digital map\n• Logo and recognition on event signage and social media\n• Co-branding on monthly flyers distributed across the neighborhood\n• Feature in our sponsor newsletter reaching 1,000+ subscribers\n\nThis is a marketing services arrangement — we provide a Marketing Services Invoice, not a donation receipt.\n\nI'd love to set up a quick 15-minute call to share more. Would any time this week or next work for you?\n\nWarm regards,\nTakako Konishi\nDirector, Bridgeport Artist Community\ntakako@bridgeportartistcommunity.org`
+    },
+    {
+      name: 'Initial Outreach — Map Spot ($150)',
+      tag: 'email',
+      body: `Subject: Get [Organization] on the Third Friday Art Walk Map\n\nHi [Name],\n\nI'm Takako Konishi, director of the Bridgeport Artist Community — the nonprofit that organizes the Third Friday Art Walk.\n\nEach month, we distribute a printed and digital map of participating Bridgeport businesses to 400–600 art walk attendees. A Map Spot ($150/year) puts [Organization] directly in front of people exploring the neighborhood.\n\nIt's a simple, affordable way to be part of the neighborhood's most active monthly event — and it comes with a Marketing Services Invoice for your records.\n\nInterested? I can send over details or answer any questions.\n\nThanks so much,\nTakako Konishi\nDirector, Bridgeport Artist Community`
+    },
+    {
+      name: 'Follow-Up — No Response',
+      tag: 'followup',
+      body: `Subject: Following up — Third Friday Art Walk Partnership\n\nHi [Name],\n\nI wanted to follow up on my note from [DATE] about a potential partnership with the Third Friday Art Walk.\n\nI know things get busy — I just wanted to make sure this didn't get lost. We'd love to have [Organization] as part of the walk this year.\n\nHappy to answer any questions or adjust the proposal to fit your budget. Even a Business Membership ($100) gets your name in front of our monthly attendees.\n\nBest,\nTakako Konishi\nBridgeport Artist Community`
+    },
+    {
+      name: 'Follow-Up — After Meeting',
+      tag: 'followup',
+      body: `Subject: Great speaking with you — next steps for Third Friday\n\nHi [Name],\n\nIt was wonderful speaking with you [today / on [DATE]]. I really appreciate your time and your interest in supporting the Third Friday Art Walk.\n\nAs discussed, I'm attaching our sponsorship proposal for [PACKAGE]. The next step would be a signed agreement and invoice — I can have both to you within 24 hours once you give the green light.\n\nPlease don't hesitate to reach out with any questions. We're excited about the possibility of [Organization] being part of this.\n\nWarm regards,\nTakako Konishi\nBridgeport Artist Community`
+    },
+    {
+      name: 'Corporate Sponsorship Proposal',
+      tag: 'proposal',
+      body: `BRIDGEPORT ARTIST COMMUNITY\nThird Friday Art Walk — Sponsorship Proposal\nPresented to: [Organization]\nDate: [DATE]\n\n──────────────────────────────────────────\nABOUT BAC & THIRD FRIDAY\n──────────────────────────────────────────\nThe Bridgeport Artist Community (BAC) is a registered Illinois nonprofit organizing the Third Friday Art Walk — a monthly event connecting 400–600 residents and visitors with galleries, restaurants, and businesses throughout Bridgeport.\n\n──────────────────────────────────────────\nPROPOSED PARTNERSHIP: CORPORATE SPONSOR\n$2,500 · Annual Agreement\n──────────────────────────────────────────\nDeliverables:\n• Prominent logo placement on all Third Friday printed maps (500+ monthly)\n• Logo on digital map\n• Social media feature post (Instagram + Facebook, 2,000+ combined followers)\n• Logo on monthly event flyers distributed throughout Bridgeport\n• Event signage at key walk locations\n• Recognition in BAC monthly sponsor newsletter\n\nThis is a Marketing Services Agreement. BAC will provide a Marketing Services Invoice. This is not a tax-deductible donation.\n\n──────────────────────────────────────────\nNEXT STEPS\n──────────────────────────────────────────\n1. Confirm agreement via email reply\n2. BAC sends Marketing Services Invoice\n3. Logo/assets submitted\n4. Sponsorship activates with next Third Friday\n\nQuestions? Contact Takako Konishi at takako@bridgeportartistcommunity.org\n\nBridgeport Artist Community · Bridgeport, Chicago, IL\nRegistered Illinois Nonprofit`
+    },
+    {
+      name: 'Grant Application Cover Letter',
+      tag: 'proposal',
+      body: `[DATE]\n\n[Program Officer Name]\n[Funding Organization]\n[Address]\n\nRe: Grant Application — Bridgeport Artist Community / Third Friday Art Walk\n\nDear [Program Officer],\n\nThe Bridgeport Artist Community (BAC) respectfully submits this application for [GRANT NAME].\n\nBAC is a registered Illinois nonprofit dedicated to fostering arts engagement, community connection, and economic vitality in Bridgeport, Chicago. Our flagship program, the Third Friday Art Walk, is a monthly event drawing 400–600 participants to galleries, restaurants, and cultural spaces throughout the neighborhood.\n\nRequested Amount: $[AMOUNT]\n\nProposed Use of Funds:\n• [Program element 1]\n• [Program element 2]\n• [Program element 3]\n\nBAC's work directly serves Bridgeport's diverse community of artists, small business owners, and residents. [GRANT NAME] funding would allow us to [specific impact].\n\nWe welcome the opportunity to discuss this application further. Please contact me at takako@bridgeportartistcommunity.org.\n\nRespectfully submitted,\nTakako Konishi\nFounder & Director\nBridgeport Artist Community`
+    }
+  ];
+
+  function renderTemplates() {
+    const grid = document.getElementById('templatesGrid');
+    if (!grid) return;
+    grid.innerHTML = TEMPLATES.map((t, i) => `
+      <div class="template-card" onclick="copyTemplate(${i}, this)">
+        <span class="template-copy-hint">Click to copy</span>
+        <div class="template-name">${t.name}</div>
+        <div><span class="template-tag ${t.tag}">${t.tag === 'email' ? '✉️ Email' : t.tag === 'proposal' ? '📄 Proposal' : '🔁 Follow-Up'}</span></div>
+        <div class="template-preview">${t.body.substring(0, 180)}…</div>
+      </div>
+    `).join('');
+  }
+
+  function copyTemplate(i, card) {
+    navigator.clipboard.writeText(TEMPLATES[i].body).then(() => {
+      card.classList.add('copied');
+      const hint = card.querySelector('.template-copy-hint');
+      if (hint) hint.style.display = 'none';
+      const toast = document.createElement('span');
+      toast.className = 'copied-toast';
+      toast.textContent = '✓ Copied!';
+      card.appendChild(toast);
+      setTimeout(() => { card.classList.remove('copied'); toast.remove(); if(hint) hint.style.display = ''; }, 2000);
+    });
+  }
+
+  // ── EMAIL GENERATOR ──
+  async function generateEmail() {
+    const prospect = document.getElementById('gen-prospect').value.trim();
+    const contact  = document.getElementById('gen-contact').value.trim();
+    const pkg      = document.getElementById('gen-package').value;
+    const tone     = document.getElementById('gen-tone').value;
+    const notes    = document.getElementById('gen-notes').value.trim();
+    if (!prospect) { alert('Please enter a prospect name.'); return; }
+
+    document.getElementById('gen-output').style.display  = 'none';
+    document.getElementById('gen-loading').style.display = 'block';
+    document.querySelector('.gen-btn').disabled = true;
+
+    const prompt = `You are writing a sponsorship outreach email on behalf of Takako Konishi, Director of the Bridgeport Artist Community (BAC), a registered Illinois nonprofit in Bridgeport, Chicago that organizes the Third Friday Art Walk.\n\nWrite a ${tone} outreach email to ${prospect}${contact ? ', addressed to ' + contact : ''}, pitching the ${pkg} sponsorship package.\n\nKey facts about BAC:\n- Third Friday Art Walk draws 400-600 attendees monthly\n- Sponsors receive map placement, flyer distribution, social media features, event signage\n- This is a Marketing Services arrangement — BAC issues a Marketing Services Invoice, NOT a donation receipt\n- Director: Takako Konishi | Marketing: Claireasa Golden | Photographer: Emily Robinson\n${notes ? '\nNotes about this prospect: ' + notes : ''}\n\nWrite a complete, ready-to-send email with subject line. Use [Name] if no contact was provided. Sign off as Takako Konishi, Director, Bridgeport Artist Community. Keep it genuine and neighborhood-focused.`;
+
+    try {
+      const res = await fetch('https://api.anthropic.com/v1/messages', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ model: 'claude-sonnet-4-20250514', max_tokens: 1000, messages: [{ role: 'user', content: prompt }] })
+      });
+      const data = await res.json();
+      const text = data.content?.map(b => b.text || '').join('') || 'Error generating email.';
+      document.getElementById('gen-result').textContent = text;
+      document.getElementById('gen-output').style.display  = 'block';
+      document.getElementById('gen-loading').style.display = 'none';
+      window._lastGenerated = { prospect, contact, pkg, text };
+    } catch(e) {
+      document.getElementById('gen-result').textContent = 'Error: ' + e.message;
+      document.getElementById('gen-output').style.display  = 'block';
+      document.getElementById('gen-loading').style.display = 'none';
+    }
+    document.querySelector('.gen-btn').disabled = false;
+  }
+
+  function copyGenerated() {
+    navigator.clipboard.writeText(document.getElementById('gen-result').textContent).then(() => {
+      const btn = document.querySelector('.gen-output-header .copy-btn');
+      const orig = btn.textContent;
+      btn.textContent = '✓ Copied!';
+      setTimeout(() => btn.textContent = orig, 2000);
+    });
+  }
+
+  function logSentEmail() {
+    if (!window._lastGenerated) return;
+    const { prospect, contact, pkg, text } = window._lastGenerated;
+    saveSentEntry({ id: 'sent-' + Date.now(), prospect, contact, type: 'Email', date: new Date().toISOString().split('T')[0], notes: 'Auto-generated: ' + pkg + '\n\n' + text.substring(0, 300) + '…' });
+    alert('Logged to Sent Log ✓');
+  }
+
+  // ── SENT LOG ──
+  let sentLog = [];
+
+  async function loadSentLog() {
+    try { sentLog = await sheetReadSheet('sent'); } catch(e) { sentLog = []; }
+    renderSentLog();
+  }
+
+  function renderSentLog() {
+    const list = document.getElementById('sentLogList');
+    if (!list) return;
+    if (!sentLog.length) { list.innerHTML = '<div class="empty-state">No outreach logged yet. Use the Email Generator or add manually.</div>'; return; }
+    const icons = { Email: '✉️', 'Phone Call': '📞', 'In-Person Visit': '🤝', 'Proposal Sent': '📄', 'Follow-Up': '🔁' };
+    list.innerHTML = [...sentLog].reverse().map(e => `
+      <div class="sent-item">
+        <div class="sent-item-icon">${icons[e.type] || '📋'}</div>
+        <div class="sent-item-body">
+          <div class="sent-item-title">${e.prospect}${e.contact ? ' · ' + e.contact : ''}</div>
+          <div class="sent-item-meta"><span class="sent-tag">${e.type}</span>${e.date}</div>
+          ${e.notes ? `<div class="sent-item-notes">${String(e.notes).replace(/\n/g,'<br>')}</div>` : ''}
+        </div>
+        <div class="sent-item-delete" onclick="deleteSentEntry('${e.id}')">✕</div>
+      </div>
+    `).join('');
+  }
+
+  function openSentModal() {
+    document.getElementById('sl-date').value = new Date().toISOString().split('T')[0];
+    document.getElementById('sentModalOverlay').style.display = 'flex';
+    populateProspectDatalist();
+  }
+  function closeSentModal() { document.getElementById('sentModalOverlay').style.display = 'none'; }
+
+  async function saveSentLog() {
+    const entry = {
+      id: 'sent-' + Date.now(),
+      prospect: document.getElementById('sl-prospect').value.trim(),
+      contact:  document.getElementById('sl-contact').value.trim(),
+      type:     document.getElementById('sl-type').value,
+      date:     document.getElementById('sl-date').value,
+      notes:    document.getElementById('sl-notes').value.trim()
+    };
+    if (!entry.prospect) { alert('Please enter a prospect name.'); return; }
+    await saveSentEntry(entry);
+    closeSentModal();
+    ['sl-prospect','sl-contact','sl-notes'].forEach(id => document.getElementById(id).value = '');
+  }
+
+  async function saveSentEntry(entry) {
+    sentLog.push(entry);
+    renderSentLog();
+    await sheetPost({ action: 'upsertSent', ...entry });
+  }
+
+  async function deleteSentEntry(id) {
+    if (!confirm('Remove this entry?')) return;
+    sentLog = sentLog.filter(e => e.id !== id);
+    renderSentLog();
+    await sheetPost({ action: 'deleteSent', id });
+  }
+
+  // ── FILES ──
+  let filesList = [];
+
+  async function loadFiles() {
+    try { filesList = await sheetReadSheet('files'); } catch(e) { filesList = []; }
+    renderFiles();
+  }
+
+  function renderFiles() {
+    const list = document.getElementById('filesList');
+    if (!list) return;
+    if (!filesList.length) { list.innerHTML = '<div class="empty-state">No files added yet. Paste a Google Drive or Dropbox link to any proposal, contract, or PDF.</div>'; return; }
+    const icons = { Proposal: '📄', Contract: '✍️', 'Marketing Email': '✉️', Invoice: '🧾', 'Press Kit': '📰', Other: '📎' };
+    list.innerHTML = [...filesList].reverse().map(f => `
+      <div class="file-item">
+        <div class="file-icon">${icons[f.type] || '📎'}</div>
+        <div class="file-body">
+          <div class="file-name">${f.name}</div>
+          <div class="file-meta">${f.type}${f.prospect ? ' · ' + f.prospect : ''}${f.notes ? ' · ' + f.notes : ''}</div>
+          <a class="file-link" href="${f.url}" target="_blank">Open file ↗</a>
+        </div>
+        <div class="file-delete" onclick="deleteFile('${f.id}')">✕</div>
+      </div>
+    `).join('');
+  }
+
+  function openFileModal() {
+    document.getElementById('fileModalOverlay').style.display = 'flex';
+    populateProspectDatalist();
+  }
+  function closeFileModal() { document.getElementById('fileModalOverlay').style.display = 'none'; }
+
+  async function saveFile() {
+    const entry = {
+      id:       'file-' + Date.now(),
+      name:     document.getElementById('fm-name').value.trim(),
+      prospect: document.getElementById('fm-prospect').value.trim(),
+      type:     document.getElementById('fm-type').value,
+      url:      document.getElementById('fm-url').value.trim(),
+      notes:    document.getElementById('fm-notes').value.trim()
+    };
+    if (!entry.name || !entry.url) { alert('Please enter a file name and URL.'); return; }
+    filesList.push(entry);
+    closeFileModal();
+    ['fm-name','fm-prospect','fm-url','fm-notes'].forEach(id => document.getElementById(id).value = '');
+    renderFiles();
+    await sheetPost({ action: 'upsertFile', ...entry });
+  }
+
+  async function deleteFile(id) {
+    if (!confirm('Remove this file?')) return;
+    filesList = filesList.filter(f => f.id !== id);
+    renderFiles();
+    await sheetPost({ action: 'deleteFile', id });
+  }
+
+
 </script>
 </body>
 </html>
