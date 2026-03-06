@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -235,7 +235,19 @@
     margin-bottom: 20px;
     padding-bottom: 14px;
     border-bottom: 2px solid var(--stone);
+    cursor: pointer;
+    user-select: none;
   }
+  .category-header:hover { opacity: 0.82; }
+  .section-chevron {
+    margin-left: auto;
+    font-size: 16px;
+    color: var(--muted);
+    transition: transform 0.25s ease, color 0.2s;
+    flex-shrink: 0;
+  }
+  .category-section.collapsed .section-chevron { transform: rotate(-90deg); }
+  .category-section.collapsed .prospect-grid { display: none; }
   .category-badge { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
   .cat-arts .category-badge { background: var(--cat-arts); }
   .cat-food .category-badge { background: var(--cat-food); }
@@ -657,7 +669,7 @@
 
   <!-- ── SPONSORSHIP PACKAGES ── -->
   <div class="category-section">
-    <div class="category-header">
+    <div class="category-header" onclick="toggleSection(this)">
       <div class="category-badge" style="background:var(--rust);"></div>
       <div class="category-title">📦 Sponsorship Packages</div>
     </div>
@@ -699,10 +711,11 @@
        ARTS & CULTURE
   ════════════════════════════════════════════════ -->
   <div class="category-section" data-category="arts">
-    <div class="category-header cat-arts">
+    <div class="category-header cat-arts" onclick="toggleSection(this)">
       <div class="category-badge"></div>
       <div class="category-title">🎨 Arts & Cultural Institutions</div>
       <div class="category-count" id="count-arts">— prospects</div>
+      <span class="section-chevron">▾</span>
     </div>
     <div class="prospect-grid" id="grid-arts">
 
@@ -829,10 +842,11 @@
        FOOD & DRINK
   ════════════════════════════════════════════════ -->
   <div class="category-section" data-category="food">
-    <div class="category-header cat-food">
+    <div class="category-header cat-food" onclick="toggleSection(this)">
       <div class="category-badge"></div>
       <div class="category-title">🍽 Food & Drink</div>
       <div class="category-count" id="count-food">— prospects</div>
+      <span class="section-chevron">▾</span>
     </div>
     <div class="prospect-grid" id="grid-food">
 
@@ -927,10 +941,11 @@
        BANKS & BUSINESS
   ════════════════════════════════════════════════ -->
   <div class="category-section" data-category="business">
-    <div class="category-header cat-business">
+    <div class="category-header cat-business" onclick="toggleSection(this)">
       <div class="category-badge"></div>
       <div class="category-title">🏢 Banks & Corporate Business</div>
       <div class="category-count" id="count-business">— prospects</div>
+      <span class="section-chevron">▾</span>
     </div>
     <div class="prospect-grid" id="grid-business">
 
@@ -1025,10 +1040,11 @@
        CIVIC & POLITICAL
   ════════════════════════════════════════════════ -->
   <div class="category-section" data-category="civic">
-    <div class="category-header cat-civic">
+    <div class="category-header cat-civic" onclick="toggleSection(this)">
       <div class="category-badge"></div>
       <div class="category-title">🏛 Civic & Political Partners</div>
       <div class="category-count" id="count-civic">— prospects</div>
+      <span class="section-chevron">▾</span>
     </div>
     <div class="prospect-grid" id="grid-civic">
 
@@ -1102,10 +1118,11 @@
        REAL ESTATE
   ════════════════════════════════════════════════ -->
   <div class="category-section" data-category="real-estate">
-    <div class="category-header cat-real-estate">
+    <div class="category-header cat-real-estate" onclick="toggleSection(this)">
       <div class="category-badge"></div>
       <div class="category-title">🏠 Real Estate & Development</div>
       <div class="category-count" id="count-realestate">— prospects</div>
+      <span class="section-chevron">▾</span>
     </div>
     <div class="prospect-grid" id="grid-realestate">
 
@@ -1146,6 +1163,628 @@
             <div class="form-field"><label>Contact Email</label><input type="email" placeholder="email@domain.com"></div>
             <div class="form-field"><label>Contact Phone</label><input type="tel" placeholder="(312) 000-0000"></div>
             <div class="form-field full"><label>Notes</label><textarea placeholder="Identify active projects via city building permits. Developers can call out Third Friday in their project's community narrative."></textarea></div>
+          </div>
+          <div class="status-row"><label style="font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);">Status:</label><select class="status-select s-new" onchange="updateStatus(this)"><option value="s-new">🔘 New</option><option value="s-contacted">📧 Contacted</option><option value="s-meeting">📅 Meeting Scheduled</option><option value="s-proposal">📄 Proposal Sent</option><option value="s-committed">✅ Committed</option><option value="s-declined">❌ Declined</option></select></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════════
+       BRIDGEPORT NEIGHBORHOOD STAPLES
+  ════════════════════════════════════════════════ -->
+  <div class="category-section" data-category="food">
+    <div class="category-header cat-food" onclick="toggleSection(this)">
+      <div class="category-badge"></div>
+      <div class="category-title">🍕 Bridgeport Food Institutions</div>
+      <div class="category-count" id="count-food2">— prospects</div>
+      <span class="section-chevron">▾</span>
+    </div>
+    <div class="prospect-grid">
+
+      <div class="card anchor" data-category="food" data-id="food-10" onclick="toggleCard(this)">
+        <div class="card-top">
+          <div>
+            <div class="card-name-row"><span class="card-name">Connie's Pizza</span><span class="anchor-tag">Anchor</span></div>
+            <div class="card-location">2373 S. Archer Ave., Chicago, IL 60616 · (312) 326-3443</div>
+            <div class="card-desc">A Chicago institution since 1963 and a flagship Bridgeport landmark. Connie's has a 400-seat private event space and a strong catering operation — making them an ideal corporate sponsor and potential Third Friday event host. Their deep community roots and family ownership make the BAC mission a natural fit.</div>
+          </div>
+          <div class="card-right"><span class="ask-range">$2,500</span><span class="chevron">▾</span></div>
+        </div>
+        <div class="card-form">
+          <div class="form-grid">
+            <div class="form-field"><label>Owner (BAC Team Member)</label><input type="text" placeholder="Assign to..."></div>
+            <div class="form-field"><label>Contact Name</label><input type="text" placeholder="Stolfe family / manager"></div>
+            <div class="form-field"><label>Contact Email</label><input type="email" placeholder="email@domain.com"></div>
+            <div class="form-field"><label>Contact Phone</label><input type="tel" value="(312) 326-3443"></div>
+            <div class="form-field full"><label>Notes</label><textarea placeholder="Family owned. In-person visit recommended. Explore Third Friday event hosting — they can accommodate 400 guests. Corporate sponsorship + map placement."></textarea></div>
+          </div>
+          <div class="status-row"><label style="font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);">Status:</label><select class="status-select s-new" onchange="updateStatus(this)"><option value="s-new">🔘 New</option><option value="s-contacted">📧 Contacted</option><option value="s-meeting">📅 Meeting Scheduled</option><option value="s-proposal">📄 Proposal Sent</option><option value="s-committed">✅ Committed</option><option value="s-declined">❌ Declined</option></select></div>
+        </div>
+      </div>
+
+      <div class="card anchor" data-category="food" data-id="food-11" onclick="toggleCard(this)">
+        <div class="card-top">
+          <div>
+            <div class="card-name-row"><span class="card-name">Ricobene's</span><span class="anchor-tag">Anchor</span></div>
+            <div class="card-location">252 W. 26th St., Chicago, IL 60616 · (312) 225-5555</div>
+            <div class="card-desc">Open since 1946, Ricobene's is one of the most iconic South Side food institutions — USA Today named their breaded steak sandwich the best in the world. Their brand is synonymous with Bridgeport authenticity. A sponsorship here lends the art walk serious neighborhood credibility and media appeal.</div>
+          </div>
+          <div class="card-right"><span class="ask-range">$1,000–$2,500</span><span class="chevron">▾</span></div>
+        </div>
+        <div class="card-form">
+          <div class="form-grid">
+            <div class="form-field"><label>Owner (BAC Team Member)</label><input type="text" placeholder="Assign to..."></div>
+            <div class="form-field"><label>Contact Name</label><input type="text" placeholder="Owner / manager"></div>
+            <div class="form-field"><label>Contact Email</label><input type="email" placeholder="email@domain.com"></div>
+            <div class="form-field"><label>Contact Phone</label><input type="tel" value="(312) 225-5555"></div>
+            <div class="form-field full"><label>Notes</label><textarea placeholder="Since 1946. In-person visit. Pitch the media angle — 'Ricobene's + Third Friday' is a great local press story. Rosa video interview is a strong opener."></textarea></div>
+          </div>
+          <div class="status-row"><label style="font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);">Status:</label><select class="status-select s-new" onchange="updateStatus(this)"><option value="s-new">🔘 New</option><option value="s-contacted">📧 Contacted</option><option value="s-meeting">📅 Meeting Scheduled</option><option value="s-proposal">📄 Proposal Sent</option><option value="s-committed">✅ Committed</option><option value="s-declined">❌ Declined</option></select></div>
+        </div>
+      </div>
+
+      <div class="card" data-category="food" data-id="food-12" onclick="toggleCard(this)">
+        <div class="card-top">
+          <div>
+            <div class="card-name-row"><span class="card-name">Ramova Theatre, Brewery & Grill</span><span class="priority-tag">Priority</span></div>
+            <div class="card-location">3518 S. Halsted St., Chicago, IL 60609 · (773) 579-1935</div>
+            <div class="card-desc">The fully restored Ramova is Bridgeport's most exciting new venue — theater, brewery, and grill under one roof. Already a Third Friday map participant. A corporate sponsorship at $2,500 is a natural ask given their deep community investment and aligned audience.</div>
+          </div>
+          <div class="card-right"><span class="ask-range">$2,500</span><span class="chevron">▾</span></div>
+        </div>
+        <div class="card-form">
+          <div class="form-grid">
+            <div class="form-field"><label>Owner (BAC Team Member)</label><input type="text" placeholder="Assign to..."></div>
+            <div class="form-field"><label>Contact Name</label><input type="text" placeholder="Management / owner"></div>
+            <div class="form-field"><label>Contact Email</label><input type="email" placeholder="email@domain.com"></div>
+            <div class="form-field"><label>Contact Phone</label><input type="tel" value="(773) 579-1935"></div>
+            <div class="form-field full"><label>Notes</label><textarea placeholder="marz.beer for Marz Brewing contact. Third Friday participant. Explore co-hosting a Third Friday event at Ramova. Corporate sponsor + presenting co-branding."></textarea></div>
+          </div>
+          <div class="status-row"><label style="font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);">Status:</label><select class="status-select s-new" onchange="updateStatus(this)"><option value="s-new">🔘 New</option><option value="s-contacted">📧 Contacted</option><option value="s-meeting">📅 Meeting Scheduled</option><option value="s-proposal">📄 Proposal Sent</option><option value="s-committed">✅ Committed</option><option value="s-declined">❌ Declined</option></select></div>
+        </div>
+      </div>
+
+      <div class="card" data-category="food" data-id="food-13" onclick="toggleCard(this)">
+        <div class="card-top">
+          <div>
+            <div class="card-name-row"><span class="card-name">Bad Owl Coffee / Bright Void Coffee / Charis Listening Bar</span></div>
+            <div class="card-location">Bridgeport, Chicago</div>
+            <div class="card-desc">Three independent Bridgeport beverage spots with strong community followings. Coffee shops and listening bars draw the exact demographic that attends Third Friday. Map spot renewals or business memberships — approach as a group for efficiency.</div>
+          </div>
+          <div class="card-right"><span class="ask-range">$100–$275 each</span><span class="chevron">▾</span></div>
+        </div>
+        <div class="card-form">
+          <div class="form-grid">
+            <div class="form-field"><label>Owner (BAC Team Member)</label><input type="text" placeholder="Assign to..."></div>
+            <div class="form-field"><label>Contact Name</label><input type="text" placeholder="Owner / manager"></div>
+            <div class="form-field"><label>Contact Email</label><input type="email" placeholder="email@domain.com"></div>
+            <div class="form-field"><label>Contact Phone</label><input type="tel" placeholder="(312) 000-0000"></div>
+            <div class="form-field full"><label>Notes</label><textarea placeholder="In-person visits. Charis Listening Bar is especially aligned — music + art community. Rosa video interview format works well for all three."></textarea></div>
+          </div>
+          <div class="status-row"><label style="font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);">Status:</label><select class="status-select s-new" onchange="updateStatus(this)"><option value="s-new">🔘 New</option><option value="s-contacted">📧 Contacted</option><option value="s-meeting">📅 Meeting Scheduled</option><option value="s-proposal">📄 Proposal Sent</option><option value="s-committed">✅ Committed</option><option value="s-declined">❌ Declined</option></select></div>
+        </div>
+      </div>
+
+      <div class="card" data-category="food" data-id="food-14" onclick="toggleCard(this)">
+        <div class="card-top">
+          <div>
+            <div class="card-name-row"><span class="card-name">Franco's Ristorante / Fabulous Freddie's / Pancho Pistolas / Taqueria San Jose</span></div>
+            <div class="card-location">Bridgeport / Near South Side</div>
+            <div class="card-desc">A coalition of neighborhood restaurants representing the diversity of Bridgeport's dining scene. Individual map spots ($150) or a group "Bridgeport Restaurant Collective" bundle pitch. These businesses benefit directly from Third Friday foot traffic.</div>
+          </div>
+          <div class="card-right"><span class="ask-range">$150–$275 each</span><span class="chevron">▾</span></div>
+        </div>
+        <div class="card-form">
+          <div class="form-grid">
+            <div class="form-field"><label>Owner (BAC Team Member)</label><input type="text" placeholder="Assign to..."></div>
+            <div class="form-field"><label>Contact Name</label><input type="text" placeholder="Owner / manager"></div>
+            <div class="form-field"><label>Contact Email</label><input type="email" placeholder="email@domain.com"></div>
+            <div class="form-field"><label>Contact Phone</label><input type="tel" placeholder="(312) 000-0000"></div>
+            <div class="form-field full"><label>Notes</label><textarea placeholder="Approach in-person. Group pitch: 'Your restaurant on the Third Friday map = free monthly marketing to 500+ art walk attendees.'"></textarea></div>
+          </div>
+          <div class="status-row"><label style="font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);">Status:</label><select class="status-select s-new" onchange="updateStatus(this)"><option value="s-new">🔘 New</option><option value="s-contacted">📧 Contacted</option><option value="s-meeting">📅 Meeting Scheduled</option><option value="s-proposal">📄 Proposal Sent</option><option value="s-committed">✅ Committed</option><option value="s-declined">❌ Declined</option></select></div>
+        </div>
+      </div>
+
+      <div class="card" data-category="food" data-id="food-15" onclick="toggleCard(this)">
+        <div class="card-top">
+          <div>
+            <div class="card-name-row"><span class="card-name">The Duck Inn / The Ballpark Pub / Lawrence's Fish & Shrimp / Pizza Nova Express</span></div>
+            <div class="card-location">Bridgeport / Armour Square</div>
+            <div class="card-desc">Neighborhood bars and quick-service restaurants that make up the social fabric of Bridgeport. Business memberships ($100) are the right entry ask — affordable and easy to say yes to. Great for roster depth and community buy-in.</div>
+          </div>
+          <div class="card-right"><span class="ask-range">$100–$150 each</span><span class="chevron">▾</span></div>
+        </div>
+        <div class="card-form">
+          <div class="form-grid">
+            <div class="form-field"><label>Owner (BAC Team Member)</label><input type="text" placeholder="Assign to..."></div>
+            <div class="form-field"><label>Contact Name</label><input type="text" placeholder="Owner / manager"></div>
+            <div class="form-field"><label>Contact Email</label><input type="email" placeholder="email@domain.com"></div>
+            <div class="form-field"><label>Contact Phone</label><input type="tel" placeholder="(312) 000-0000"></div>
+            <div class="form-field full"><label>Notes</label><textarea placeholder="The Duck Inn is a higher-end prospect — chef-driven gastropub, may be open to $275 map bundle. Ballpark Pub is Sox-adjacent. Lawrence's is a legendary Chicago fish shack."></textarea></div>
+          </div>
+          <div class="status-row"><label style="font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);">Status:</label><select class="status-select s-new" onchange="updateStatus(this)"><option value="s-new">🔘 New</option><option value="s-contacted">📧 Contacted</option><option value="s-meeting">📅 Meeting Scheduled</option><option value="s-proposal">📄 Proposal Sent</option><option value="s-committed">✅ Committed</option><option value="s-declined">❌ Declined</option></select></div>
+        </div>
+      </div>
+
+      <div class="card" data-category="food" data-id="food-16" onclick="toggleCard(this)">
+        <div class="card-top">
+          <div>
+            <div class="card-name-row"><span class="card-name">Martinez Supermarket & Grill / Testa Produce</span></div>
+            <div class="card-location">Bridgeport / Chicago</div>
+            <div class="card-desc">Local grocery and produce suppliers that serve the community daily. Business membership ($100) is a great fit — affordable, low-barrier, and builds the BAC roster with essential neighborhood businesses. Testa Produce is a longtime Chicago institution with strong community ties.</div>
+          </div>
+          <div class="card-right"><span class="ask-range">$100–$200 each</span><span class="chevron">▾</span></div>
+        </div>
+        <div class="card-form">
+          <div class="form-grid">
+            <div class="form-field"><label>Owner (BAC Team Member)</label><input type="text" placeholder="Assign to..."></div>
+            <div class="form-field"><label>Contact Name</label><input type="text" placeholder="Owner / manager"></div>
+            <div class="form-field"><label>Contact Email</label><input type="email" placeholder="email@domain.com"></div>
+            <div class="form-field"><label>Contact Phone</label><input type="tel" placeholder="(312) 000-0000"></div>
+            <div class="form-field full"><label>Notes</label><textarea placeholder="In-person visits. Testa Produce supplies many Bridgeport restaurants — a co-op pitch through restaurant partners may work well."></textarea></div>
+          </div>
+          <div class="status-row"><label style="font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);">Status:</label><select class="status-select s-new" onchange="updateStatus(this)"><option value="s-new">🔘 New</option><option value="s-contacted">📧 Contacted</option><option value="s-meeting">📅 Meeting Scheduled</option><option value="s-proposal">📄 Proposal Sent</option><option value="s-committed">✅ Committed</option><option value="s-declined">❌ Declined</option></select></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════
+       BANKS, FINANCE & INSURANCE
+  ════════════════════════════════════════════════ -->
+  <div class="category-section" data-category="business">
+    <div class="category-header cat-business" onclick="toggleSection(this)">
+      <div class="category-badge"></div>
+      <div class="category-title">🏦 Banks, Finance & Insurance</div>
+      <div class="category-count" id="count-business2">— prospects</div>
+      <span class="section-chevron">▾</span>
+    </div>
+    <div class="prospect-grid">
+
+      <div class="card anchor" data-category="business" data-id="biz-10" onclick="toggleCard(this)">
+        <div class="card-top">
+          <div>
+            <div class="card-name-row"><span class="card-name">Byline Bank</span><span class="anchor-tag">Top Priority</span></div>
+            <div class="card-location">180 N. LaSalle St., Chicago, IL 60601 · (773) 293-4760 · bylinebank.com</div>
+            <div class="card-desc">Byline Bank is a proven community sponsor — they sponsor the Blackhawks, Bears CTA routes, and have an entire nonprofit banking program. They explicitly market themselves as a partner for sponsorships and volunteer opportunities. As a registered Illinois nonprofit, BAC is exactly their target. A $2,500–$3,000 corporate sponsorship is a strong, well-supported ask.</div>
+          </div>
+          <div class="card-right"><span class="ask-range">$2,500–$3,000</span><span class="chevron">▾</span></div>
+        </div>
+        <div class="card-form">
+          <div class="form-grid">
+            <div class="form-field"><label>Owner (BAC Team Member)</label><input type="text" placeholder="Assign to..."></div>
+            <div class="form-field"><label>Contact Name</label><input type="text" placeholder="Community/marketing officer"></div>
+            <div class="form-field"><label>Contact Email</label><input type="email" placeholder="email@bylinebank.com"></div>
+            <div class="form-field"><label>Contact Phone</label><input type="tel" value="(773) 293-4760"></div>
+            <div class="form-field full"><label>Notes</label><textarea placeholder="Strong nonprofit sponsorship history. Approach via their community banking team. Bring BAC nonprofit registration docs. CRA compliance angle is a strong hook. They have a Bridgeport-area branch."></textarea></div>
+          </div>
+          <div class="status-row"><label style="font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);">Status:</label><select class="status-select s-new" onchange="updateStatus(this)"><option value="s-new">🔘 New</option><option value="s-contacted">📧 Contacted</option><option value="s-meeting">📅 Meeting Scheduled</option><option value="s-proposal">📄 Proposal Sent</option><option value="s-committed">✅ Committed</option><option value="s-declined">❌ Declined</option></select></div>
+        </div>
+      </div>
+
+      <div class="card anchor" data-category="business" data-id="biz-11" onclick="toggleCard(this)">
+        <div class="card-top">
+          <div>
+            <div class="card-name-row"><span class="card-name">Millennium Bank</span><span class="anchor-tag">Top Priority</span></div>
+            <div class="card-location">3156 S. Morgan St., Chicago, IL 60608 · (773) 927-3501 · mb.bank</div>
+            <div class="card-desc">Millennium Bank is literally located in Bridgeport and is a Minority Depository Institution — the only Illinois-based MDI with a deep South Side presence. Their mission to serve minority and underserved small businesses aligns directly with BAC's diverse artist community. This is the strongest possible bank ask — they're in the neighborhood.</div>
+          </div>
+          <div class="card-right"><span class="ask-range">$2,500–$3,000</span><span class="chevron">▾</span></div>
+        </div>
+        <div class="card-form">
+          <div class="form-grid">
+            <div class="form-field"><label>Owner (BAC Team Member)</label><input type="text" placeholder="Assign to..."></div>
+            <div class="form-field"><label>Contact Name</label><input type="text" placeholder="Branch manager / community officer"></div>
+            <div class="form-field"><label>Contact Email</label><input type="email" placeholder="email@mb.bank"></div>
+            <div class="form-field"><label>Contact Phone</label><input type="tel" value="(773) 927-3501"></div>
+            <div class="form-field full"><label>Notes</label><textarea placeholder="Walk in — they're at 3156 S Morgan, right in Bridgeport. MDI mission aligns with BAC's diverse artist community. Alicia Felix is VP of Community Banking. Strong CRA hook."></textarea></div>
+          </div>
+          <div class="status-row"><label style="font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);">Status:</label><select class="status-select s-new" onchange="updateStatus(this)"><option value="s-new">🔘 New</option><option value="s-contacted">📧 Contacted</option><option value="s-meeting">📅 Meeting Scheduled</option><option value="s-proposal">📄 Proposal Sent</option><option value="s-committed">✅ Committed</option><option value="s-declined">❌ Declined</option></select></div>
+        </div>
+      </div>
+
+      <div class="card" data-category="business" data-id="biz-12" onclick="toggleCard(this)">
+        <div class="card-top">
+          <div>
+            <div class="card-name-row"><span class="card-name">Numark (Northstar) Credit Union / People's Bank / Verve Credit Union</span></div>
+            <div class="card-location">Chicago South Side</div>
+            <div class="card-desc">Three credit unions serving the South Side community. Credit unions often have community development mandates similar to CRA requirements for banks — they're strong sponsorship candidates. A $1,000–$2,500 ask with map and event co-branding is appropriate.</div>
+          </div>
+          <div class="card-right"><span class="ask-range">$1,000–$2,500</span><span class="chevron">▾</span></div>
+        </div>
+        <div class="card-form">
+          <div class="form-grid">
+            <div class="form-field"><label>Owner (BAC Team Member)</label><input type="text" placeholder="Assign to..."></div>
+            <div class="form-field"><label>Contact Name</label><input type="text" placeholder="Community development officer"></div>
+            <div class="form-field"><label>Contact Email</label><input type="email" placeholder="email@domain.com"></div>
+            <div class="form-field"><label>Contact Phone</label><input type="tel" placeholder="(312) 000-0000"></div>
+            <div class="form-field full"><label>Notes</label><textarea placeholder="Research each CU's community investment budget. Verve Credit Union has a strong community focus. Numark/Northstar serves union members across Chicago."></textarea></div>
+          </div>
+          <div class="status-row"><label style="font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);">Status:</label><select class="status-select s-new" onchange="updateStatus(this)"><option value="s-new">🔘 New</option><option value="s-contacted">📧 Contacted</option><option value="s-meeting">📅 Meeting Scheduled</option><option value="s-proposal">📄 Proposal Sent</option><option value="s-committed">✅ Committed</option><option value="s-declined">❌ Declined</option></select></div>
+        </div>
+      </div>
+
+      <div class="card" data-category="business" data-id="biz-13" onclick="toggleCard(this)">
+        <div class="card-top">
+          <div>
+            <div class="card-name-row"><span class="card-name">C&C Insurance / Daley Insurance / M. Rodriguez Agency (American Family) / State Farm (McKenzie)</span></div>
+            <div class="card-location">Bridgeport / Chicago South Side</div>
+            <div class="card-desc">Four local insurance agencies — the bread-and-butter of neighborhood sponsorships. Independent agents have marketing budgets and genuine interest in community visibility. Business membership ($100) or map spot ($150) is the right ask. High volume, low friction.</div>
+          </div>
+          <div class="card-right"><span class="ask-range">$100–$200 each</span><span class="chevron">▾</span></div>
+        </div>
+        <div class="card-form">
+          <div class="form-grid">
+            <div class="form-field"><label>Owner (BAC Team Member)</label><input type="text" placeholder="Assign to..."></div>
+            <div class="form-field"><label>Contact Name</label><input type="text" placeholder="Agent name"></div>
+            <div class="form-field"><label>Contact Email</label><input type="email" placeholder="email@domain.com"></div>
+            <div class="form-field"><label>Contact Phone</label><input type="tel" placeholder="(312) 000-0000"></div>
+            <div class="form-field full"><label>Notes</label><textarea placeholder="M. Rodriguez Agency (American Family) and McKenzie State Farm are local agents with community marketing budgets. Email outreach with invoice works well for insurance agents."></textarea></div>
+          </div>
+          <div class="status-row"><label style="font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);">Status:</label><select class="status-select s-new" onchange="updateStatus(this)"><option value="s-new">🔘 New</option><option value="s-contacted">📧 Contacted</option><option value="s-meeting">📅 Meeting Scheduled</option><option value="s-proposal">📄 Proposal Sent</option><option value="s-committed">✅ Committed</option><option value="s-declined">❌ Declined</option></select></div>
+        </div>
+      </div>
+
+      <div class="card" data-category="business" data-id="biz-14" onclick="toggleCard(this)">
+        <div class="card-top">
+          <div>
+            <div class="card-name-row"><span class="card-name">Tax & Beyond / Kathleen Marie Walsh Ltd. / Rodriguez & Flores-Szeto / Matthew & Drnovsek Law</span></div>
+            <div class="card-location">Bridgeport / Chicago</div>
+            <div class="card-desc">Professional services firms — tax preparers and law offices — that serve the Bridgeport community. Business membership ($100) is a natural, low-ask fit. These businesses benefit from community visibility among the same residents they serve.</div>
+          </div>
+          <div class="card-right"><span class="ask-range">$100–$200 each</span><span class="chevron">▾</span></div>
+        </div>
+        <div class="card-form">
+          <div class="form-grid">
+            <div class="form-field"><label>Owner (BAC Team Member)</label><input type="text" placeholder="Assign to..."></div>
+            <div class="form-field"><label>Contact Name</label><input type="text" placeholder="Principal / owner"></div>
+            <div class="form-field"><label>Contact Email</label><input type="email" placeholder="email@domain.com"></div>
+            <div class="form-field"><label>Contact Phone</label><input type="tel" placeholder="(312) 000-0000"></div>
+            <div class="form-field full"><label>Notes</label><textarea placeholder="Email outreach with BAC nonprofit letterhead from Takako. Mention the marketing services invoice (not donation) to appeal to business tax deduction sensibility."></textarea></div>
+          </div>
+          <div class="status-row"><label style="font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);">Status:</label><select class="status-select s-new" onchange="updateStatus(this)"><option value="s-new">🔘 New</option><option value="s-contacted">📧 Contacted</option><option value="s-meeting">📅 Meeting Scheduled</option><option value="s-proposal">📄 Proposal Sent</option><option value="s-committed">✅ Committed</option><option value="s-declined">❌ Declined</option></select></div>
+        </div>
+      </div>
+
+      <div class="card" data-category="business" data-id="biz-15" onclick="toggleCard(this)">
+        <div class="card-top">
+          <div>
+            <div class="card-name-row"><span class="card-name">Healthcare Solutions Team / Solo Eye Care & Eyewear Gallery / Tone & Texture Aesthetics</span></div>
+            <div class="card-location">Bridgeport / Chicago</div>
+            <div class="card-desc">Healthcare and wellness businesses that serve the Bridgeport community. Business membership ($100) or flyer sponsorship ($200) — these businesses have marketing budgets and benefit from neighborhood visibility. Wellness aligns well with the arts community audience.</div>
+          </div>
+          <div class="card-right"><span class="ask-range">$100–$200 each</span><span class="chevron">▾</span></div>
+        </div>
+        <div class="card-form">
+          <div class="form-grid">
+            <div class="form-field"><label>Owner (BAC Team Member)</label><input type="text" placeholder="Assign to..."></div>
+            <div class="form-field"><label>Contact Name</label><input type="text" placeholder="Owner / practice manager"></div>
+            <div class="form-field"><label>Contact Email</label><input type="email" placeholder="email@domain.com"></div>
+            <div class="form-field"><label>Contact Phone</label><input type="tel" placeholder="(312) 000-0000"></div>
+            <div class="form-field full"><label>Notes</label><textarea placeholder="Solo Eye Care and Tone & Texture are boutique practices — they value community positioning. Email pitch with flyer sponsorship as entry point."></textarea></div>
+          </div>
+          <div class="status-row"><label style="font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);">Status:</label><select class="status-select s-new" onchange="updateStatus(this)"><option value="s-new">🔘 New</option><option value="s-contacted">📧 Contacted</option><option value="s-meeting">📅 Meeting Scheduled</option><option value="s-proposal">📄 Proposal Sent</option><option value="s-committed">✅ Committed</option><option value="s-declined">❌ Declined</option></select></div>
+        </div>
+      </div>
+
+      <div class="card" data-category="business" data-id="biz-16" onclick="toggleCard(this)">
+        <div class="card-top">
+          <div>
+            <div class="card-name-row"><span class="card-name">Bark 'N' Bites / Budget Blinds / Chicago Car Collective / Reeder Heating & Cooling / Tony's Auto Collision</span></div>
+            <div class="card-location">Bridgeport / Chicago South Side</div>
+            <div class="card-desc">Neighborhood service businesses — pet care, home services, auto. Business membership ($100) is the right ask. These businesses have marketing budgets and genuine desire to be seen as community-minded. Great for roster volume and neighborhood authenticity.</div>
+          </div>
+          <div class="card-right"><span class="ask-range">$100 each</span><span class="chevron">▾</span></div>
+        </div>
+        <div class="card-form">
+          <div class="form-grid">
+            <div class="form-field"><label>Owner (BAC Team Member)</label><input type="text" placeholder="Assign to..."></div>
+            <div class="form-field"><label>Contact Name</label><input type="text" placeholder="Owner / manager"></div>
+            <div class="form-field"><label>Contact Email</label><input type="email" placeholder="email@domain.com"></div>
+            <div class="form-field"><label>Contact Phone</label><input type="tel" placeholder="(312) 000-0000"></div>
+            <div class="form-field full"><label>Notes</label><textarea placeholder="Email blast campaign works for this group. Short pitch: business membership = name on BAC website, newsletter, and Third Friday materials for $100/yr."></textarea></div>
+          </div>
+          <div class="status-row"><label style="font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);">Status:</label><select class="status-select s-new" onchange="updateStatus(this)"><option value="s-new">🔘 New</option><option value="s-contacted">📧 Contacted</option><option value="s-meeting">📅 Meeting Scheduled</option><option value="s-proposal">📄 Proposal Sent</option><option value="s-committed">✅ Committed</option><option value="s-declined">❌ Declined</option></select></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════
+       CORPORATE & INDUSTRY
+  ════════════════════════════════════════════════ -->
+  <div class="category-section" data-category="business">
+    <div class="category-header cat-business" onclick="toggleSection(this)">
+      <div class="category-badge"></div>
+      <div class="category-title">🏭 Corporate & Industry Partners</div>
+      <div class="category-count" id="count-corp">— prospects</div>
+      <span class="section-chevron">▾</span>
+    </div>
+    <div class="prospect-grid">
+
+      <div class="card anchor" data-category="business" data-id="corp-01" onclick="toggleCard(this)">
+        <div class="card-top">
+          <div>
+            <div class="card-name-row"><span class="card-name">Chicago White Sox / White Sox Charities</span><span class="anchor-tag">Dream Partner</span></div>
+            <div class="card-location">333 W. 35th St., Chicago, IL 60616 · <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="ff9c9092928a91968b86bf9c97968c9087d19c9092">[email&#160;protected]</a> · (312) 674-1000</div>
+            <div class="card-desc">The White Sox and Bridgeport are inseparable — Guaranteed Rate Field sits in the neighborhood. White Sox Charities has delivered over $50 million to Chicago nonprofits. As a registered IL nonprofit, BAC can apply for their grant program AND pitch a co-branding sponsorship. This is the highest-visibility partnership available to BAC.</div>
+          </div>
+          <div class="card-right"><span class="ask-range">Grant + Sponsorship</span><span class="chevron">▾</span></div>
+        </div>
+        <div class="card-form">
+          <div class="form-grid">
+            <div class="form-field"><label>Owner (BAC Team Member)</label><input type="text" placeholder="Assign to..."></div>
+            <div class="form-field"><label>Contact Name</label><input type="text" placeholder="White Sox Charities contact"></div>
+            <div class="form-field"><label>Contact Email</label><input type="email" value="community@chisox.com"></div>
+            <div class="form-field"><label>Contact Phone</label><input type="tel" value="(312) 674-1000"></div>
+            <div class="form-field full"><label>Notes</label><textarea placeholder="Two tracks: (1) Apply to White Sox Charities grant program — wscharities@chisox.com. (2) Pitch community sponsorship to their VP of Sales — co-branding Third Friday with Sox community identity. The 1901 Project (Sox stadium redevelopment) may be another angle."></textarea></div>
+          </div>
+          <div class="status-row"><label style="font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);">Status:</label><select class="status-select s-new" onchange="updateStatus(this)"><option value="s-new">🔘 New</option><option value="s-contacted">📧 Contacted</option><option value="s-meeting">📅 Meeting Scheduled</option><option value="s-proposal">📄 Proposal Sent</option><option value="s-committed">✅ Committed</option><option value="s-declined">❌ Declined</option></select></div>
+        </div>
+      </div>
+
+      <div class="card" data-category="business" data-id="corp-02" onclick="toggleCard(this)">
+        <div class="card-top">
+          <div>
+            <div class="card-name-row"><span class="card-name">The 78 Megadevelopment / 1901 Project</span><span class="priority-tag">Long Game</span></div>
+            <div class="card-location">Near South Side / Guaranteed Rate Field Area</div>
+            <div class="card-desc">The 78 is Chicago's largest planned development — a massive mixed-use project on the South Branch of the Chicago River, adjacent to Bridgeport. The 1901 Project (White Sox new stadium) is planned nearby. These developments need community arts programming as part of their narrative. Early relationships now = major sponsorships later.</div>
+          </div>
+          <div class="card-right"><span class="ask-range">$3,000+ (future)</span><span class="chevron">▾</span></div>
+        </div>
+        <div class="card-form">
+          <div class="form-grid">
+            <div class="form-field"><label>Owner (BAC Team Member)</label><input type="text" placeholder="Assign to..."></div>
+            <div class="form-field"><label>Contact Name</label><input type="text" placeholder="Community relations contact"></div>
+            <div class="form-field"><label>Contact Email</label><input type="email" placeholder="email@domain.com"></div>
+            <div class="form-field"><label>Contact Phone</label><input type="tel" placeholder="(312) 000-0000"></div>
+            <div class="form-field full"><label>Notes</label><textarea placeholder="Related Midwest (The 78 developer) has community engagement requirements. 1901 Project (new Sox stadium) will need neighborhood arts programming. Get BAC on their radar now. Takako should lead this outreach."></textarea></div>
+          </div>
+          <div class="status-row"><label style="font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);">Status:</label><select class="status-select s-new" onchange="updateStatus(this)"><option value="s-new">🔘 New</option><option value="s-contacted">📧 Contacted</option><option value="s-meeting">📅 Meeting Scheduled</option><option value="s-proposal">📄 Proposal Sent</option><option value="s-committed">✅ Committed</option><option value="s-declined">❌ Declined</option></select></div>
+        </div>
+      </div>
+
+      <div class="card" data-category="business" data-id="corp-03" onclick="toggleCard(this)">
+        <div class="card-top">
+          <div>
+            <div class="card-name-row"><span class="card-name">ADG – Athena Design Group</span></div>
+            <div class="card-location">Chicago</div>
+            <div class="card-desc">Design firm — natural creative industry alignment with BAC's arts mission. A corporate sponsorship or in-kind design services trade could be mutually beneficial. Design firms often seek community visibility with artists and creatives.</div>
+          </div>
+          <div class="card-right"><span class="ask-range">$1,000–$2,500</span><span class="chevron">▾</span></div>
+        </div>
+        <div class="card-form">
+          <div class="form-grid">
+            <div class="form-field"><label>Owner (BAC Team Member)</label><input type="text" placeholder="Assign to..."></div>
+            <div class="form-field"><label>Contact Name</label><input type="text" placeholder="Principal / owner"></div>
+            <div class="form-field"><label>Contact Email</label><input type="email" placeholder="email@domain.com"></div>
+            <div class="form-field"><label>Contact Phone</label><input type="tel" placeholder="(312) 000-0000"></div>
+            <div class="form-field full"><label>Notes</label><textarea placeholder="Design firm — explore in-kind trade (design services) in addition to or instead of cash sponsorship. Their portfolio benefits from association with BAC's artist community."></textarea></div>
+          </div>
+          <div class="status-row"><label style="font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);">Status:</label><select class="status-select s-new" onchange="updateStatus(this)"><option value="s-new">🔘 New</option><option value="s-contacted">📧 Contacted</option><option value="s-meeting">📅 Meeting Scheduled</option><option value="s-proposal">📄 Proposal Sent</option><option value="s-committed">✅ Committed</option><option value="s-declined">❌ Declined</option></select></div>
+        </div>
+      </div>
+
+      <div class="card" data-category="business" data-id="corp-04" onclick="toggleCard(this)">
+        <div class="card-top">
+          <div>
+            <div class="card-name-row"><span class="card-name">GFiber (Google Fiber Chicago)</span></div>
+            <div class="card-location">Chicago · mlb.com/whitesox/community (for community contact)</div>
+            <div class="card-desc">Google Fiber's Chicago expansion is actively seeking community partnerships to build goodwill in neighborhoods they're entering. Tech companies like GFiber have significant community sponsorship budgets. A co-branded "Tech + Arts" presence at Third Friday is a compelling pitch for a company trying to build South Side relationships.</div>
+          </div>
+          <div class="card-right"><span class="ask-range">$2,500–$3,000+</span><span class="chevron">▾</span></div>
+        </div>
+        <div class="card-form">
+          <div class="form-grid">
+            <div class="form-field"><label>Owner (BAC Team Member)</label><input type="text" placeholder="Assign to..."></div>
+            <div class="form-field"><label>Contact Name</label><input type="text" placeholder="Community partnerships contact"></div>
+            <div class="form-field"><label>Contact Email</label><input type="email" placeholder="email@domain.com"></div>
+            <div class="form-field"><label>Contact Phone</label><input type="tel" placeholder="(312) 000-0000"></div>
+            <div class="form-field full"><label>Notes</label><textarea placeholder="Google Fiber Chicago community contact via fiber.google.com/chicago. Tech company with community investment mandate as part of city franchise agreement. Strong large corporate sponsorship candidate."></textarea></div>
+          </div>
+          <div class="status-row"><label style="font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);">Status:</label><select class="status-select s-new" onchange="updateStatus(this)"><option value="s-new">🔘 New</option><option value="s-contacted">📧 Contacted</option><option value="s-meeting">📅 Meeting Scheduled</option><option value="s-proposal">📄 Proposal Sent</option><option value="s-committed">✅ Committed</option><option value="s-declined">❌ Declined</option></select></div>
+        </div>
+      </div>
+
+      <div class="card" data-category="business" data-id="corp-05" onclick="toggleCard(this)">
+        <div class="card-top">
+          <div>
+            <div class="card-name-row"><span class="card-name">Evans Food Group / Great Western Beef / South Chicago Packing / Lincoln Provisions / Vienna Beef / Schulze & Burch Biscuit</span></div>
+            <div class="card-location">Chicago South Side / Bridgeport area</div>
+            <div class="card-desc">A cluster of South Side food manufacturers and distributors — legacy Chicago businesses with deep community roots. Corporate sponsorships ($2,500) or large corporate ($3,000+) with event co-branding. Vienna Beef in particular is a major Chicago brand with significant marketing budgets.</div>
+          </div>
+          <div class="card-right"><span class="ask-range">$1,000–$3,000</span><span class="chevron">▾</span></div>
+        </div>
+        <div class="card-form">
+          <div class="form-grid">
+            <div class="form-field"><label>Owner (BAC Team Member)</label><input type="text" placeholder="Assign to..."></div>
+            <div class="form-field"><label>Contact Name</label><input type="text" placeholder="Marketing / community relations"></div>
+            <div class="form-field"><label>Contact Email</label><input type="email" placeholder="email@domain.com"></div>
+            <div class="form-field"><label>Contact Phone</label><input type="tel" placeholder="(312) 000-0000"></div>
+            <div class="form-field full"><label>Notes</label><textarea placeholder="Vienna Beef: 2501 N. Damen, (773) 278-7878 — major Chicago brand, strong community marketing. Evans Food Group: South Side manufacturer. Schulze & Burch: Bridgeport biscuit manufacturer est. 1902. All have South Side identity to leverage."></textarea></div>
+          </div>
+          <div class="status-row"><label style="font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);">Status:</label><select class="status-select s-new" onchange="updateStatus(this)"><option value="s-new">🔘 New</option><option value="s-contacted">📧 Contacted</option><option value="s-meeting">📅 Meeting Scheduled</option><option value="s-proposal">📄 Proposal Sent</option><option value="s-committed">✅ Committed</option><option value="s-declined">❌ Declined</option></select></div>
+        </div>
+      </div>
+
+      <div class="card" data-category="business" data-id="corp-06" onclick="toggleCard(this)">
+        <div class="card-top">
+          <div>
+            <div class="card-name-row"><span class="card-name">Hart Davis Hart Wine / Grandstand / Henry Kaminski Inc. / Marina Cartage / Beverly Asphalt / MG Granite</span></div>
+            <div class="card-location">Chicago / Bridgeport</div>
+            <div class="card-desc">A diverse group of South Side B2B companies — wine auctioneer, sportswear, construction, transportation, asphalt, granite. Business memberships ($100) and map spots ($150) are the right entry ask. These businesses value community presence even if their core business isn't consumer-facing.</div>
+          </div>
+          <div class="card-right"><span class="ask-range">$100–$500 each</span><span class="chevron">▾</span></div>
+        </div>
+        <div class="card-form">
+          <div class="form-grid">
+            <div class="form-field"><label>Owner (BAC Team Member)</label><input type="text" placeholder="Assign to..."></div>
+            <div class="form-field"><label>Contact Name</label><input type="text" placeholder="Owner / marketing contact"></div>
+            <div class="form-field"><label>Contact Email</label><input type="email" placeholder="email@domain.com"></div>
+            <div class="form-field"><label>Contact Phone</label><input type="tel" placeholder="(312) 000-0000"></div>
+            <div class="form-field full"><label>Notes</label><textarea placeholder="Hart Davis Hart Wine Co. is a premium auction house — may be open to event sponsorship/wine tasting partnership. Grandstand (sportswear) could provide in-kind BAC merchandise. Email outreach from Takako on nonprofit letterhead."></textarea></div>
+          </div>
+          <div class="status-row"><label style="font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);">Status:</label><select class="status-select s-new" onchange="updateStatus(this)"><option value="s-new">🔘 New</option><option value="s-contacted">📧 Contacted</option><option value="s-meeting">📅 Meeting Scheduled</option><option value="s-proposal">📄 Proposal Sent</option><option value="s-committed">✅ Committed</option><option value="s-declined">❌ Declined</option></select></div>
+        </div>
+      </div>
+
+      <div class="card" data-category="business" data-id="corp-07" onclick="toggleCard(this)">
+        <div class="card-top">
+          <div>
+            <div class="card-name-row"><span class="card-name">Artane Construction</span></div>
+            <div class="card-location">1342 W. 31st Pl., Chicago, IL 60608 · (773) 316-9400 · artaneconstruction.com</div>
+            <div class="card-desc">Husband-and-wife general contractor Simon and Rachel McCormac, based right in Bridgeport since 2001. Specializes in home builds and condo remodels across the South Side. A small but deeply local business with genuine community ties — business membership ($100) or map spot ($150) is a natural fit.</div>
+          </div>
+          <div class="card-right"><span class="ask-range">$100–$200</span><span class="chevron">▾</span></div>
+        </div>
+        <div class="card-form">
+          <div class="form-grid">
+            <div class="form-field"><label>Owner (BAC Team Member)</label><input type="text" placeholder="Assign to..."></div>
+            <div class="form-field"><label>Contact Name</label><input type="text" value="Simon & Rachel McCormac"></div>
+            <div class="form-field"><label>Contact Email</label><input type="email" placeholder="via artaneconstruction.com"></div>
+            <div class="form-field"><label>Contact Phone</label><input type="tel" value="(773) 316-9400"></div>
+            <div class="form-field full"><label>Notes</label><textarea placeholder="Very local — 31st Pl is the heart of Bridgeport. In-person visit or warm email intro. Rachel handles client relations. Business membership ($100) is the right ask. Strong neighborhood identity."></textarea></div>
+          </div>
+          <div class="status-row"><label style="font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);">Status:</label><select class="status-select s-new" onchange="updateStatus(this)"><option value="s-new">🔘 New</option><option value="s-contacted">📧 Contacted</option><option value="s-meeting">📅 Meeting Scheduled</option><option value="s-proposal">📄 Proposal Sent</option><option value="s-committed">✅ Committed</option><option value="s-declined">❌ Declined</option></select></div>
+        </div>
+      </div>
+
+      <div class="card" data-category="business" data-id="corp-08" onclick="toggleCard(this)">
+        <div class="card-top">
+          <div>
+            <div class="card-name-row"><span class="card-name">American Eagle Food Machinery, Inc.</span></div>
+            <div class="card-location">3131 S. Canal St., Chicago, IL 60616 · (773) 376-0800 · americaneaglemachine.com</div>
+            <div class="card-desc">A South Side manufacturing institution since 1980 — commercial restaurant and bakery equipment, located just north of Bridgeport. They supply the very restaurants that are BAC's Third Friday participants. A corporate sponsorship creates a full-circle South Side story: the machines that make the food, in the neighborhood that makes the art.</div>
+          </div>
+          <div class="card-right"><span class="ask-range">$500–$2,500</span><span class="chevron">▾</span></div>
+        </div>
+        <div class="card-form">
+          <div class="form-grid">
+            <div class="form-field"><label>Owner (BAC Team Member)</label><input type="text" placeholder="Assign to..."></div>
+            <div class="form-field"><label>Contact Name</label><input type="text" placeholder="Owner / marketing contact"></div>
+            <div class="form-field"><label>Contact Email</label><input type="email" value="feedback@americaneaglemachine.com"></div>
+            <div class="form-field"><label>Contact Phone</label><input type="tel" value="(773) 376-0800"></div>
+            <div class="form-field full"><label>Notes</label><textarea placeholder="Est. 1980, on Canal St. Their customer base is Bridgeport restaurants. Pitch the cross-promotion angle: 'You supply Connie's, Ricobene's — be a co-sponsor of the arts walk that puts people in those restaurants.' Toll-free: 800-836-5756."></textarea></div>
+          </div>
+          <div class="status-row"><label style="font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);">Status:</label><select class="status-select s-new" onchange="updateStatus(this)"><option value="s-new">🔘 New</option><option value="s-contacted">📧 Contacted</option><option value="s-meeting">📅 Meeting Scheduled</option><option value="s-proposal">📄 Proposal Sent</option><option value="s-committed">✅ Committed</option><option value="s-declined">❌ Declined</option></select></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════
+       REAL ESTATE (NEW PROSPECTS)
+  ════════════════════════════════════════════════ -->
+  <div class="category-section" data-category="real-estate">
+    <div class="category-header cat-real-estate" onclick="toggleSection(this)">
+      <div class="category-badge"></div>
+      <div class="category-title">🏠 Real Estate (Additional)</div>
+      <div class="category-count" id="count-re2">— prospects</div>
+      <span class="section-chevron">▾</span>
+    </div>
+    <div class="prospect-grid">
+
+      <div class="card anchor" data-category="real-estate" data-id="re-10" onclick="toggleCard(this)">
+        <div class="card-top">
+          <div>
+            <div class="card-name-row"><span class="card-name">High Fidelity Realty / Halsted Taylor Real Estate / Real Realty</span><span class="anchor-tag">Priority</span></div>
+            <div class="card-location">High Fidelity: 773-697-4112 · highfidelityrealty.com · Halsted Taylor: (312) 421-5151 · Real Realty: (773) 869-0500</div>
+            <div class="card-desc">Three Bridgeport-focused real estate agencies that actively market the neighborhood. High Fidelity Realty has a dedicated Bridgeport neighborhood page — they literally sell Bridgeport's lifestyle. A corporate sponsorship ($2,500) is a direct marketing spend for them: Third Friday is exactly what they show buyers.</div>
+          </div>
+          <div class="card-right"><span class="ask-range">$2,500 each</span><span class="chevron">▾</span></div>
+        </div>
+        <div class="card-form">
+          <div class="form-grid">
+            <div class="form-field"><label>Owner (BAC Team Member)</label><input type="text" placeholder="Assign to..."></div>
+            <div class="form-field"><label>Contact Name</label><input type="text" placeholder="Broker / agent name"></div>
+            <div class="form-field"><label>Contact Email</label><input type="email" placeholder="email@domain.com"></div>
+            <div class="form-field"><label>Contact Phone</label><input type="tel" placeholder="773-697-4112"></div>
+            <div class="form-field full"><label>Notes</label><textarea placeholder="High Fidelity Realty: highfidelityrealty.com/neighborhoods/bridgeport — 773-697-4112. Halsted Taylor Real Estate: (312) 421-5151. Real Realty: realrealtyus.com (773) 869-0500. All three are Bridgeport-active agencies."></textarea></div>
+          </div>
+          <div class="status-row"><label style="font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);">Status:</label><select class="status-select s-new" onchange="updateStatus(this)"><option value="s-new">🔘 New</option><option value="s-contacted">📧 Contacted</option><option value="s-meeting">📅 Meeting Scheduled</option><option value="s-proposal">📄 Proposal Sent</option><option value="s-committed">✅ Committed</option><option value="s-declined">❌ Declined</option></select></div>
+        </div>
+      </div>
+
+      <div class="card" data-category="real-estate" data-id="re-11" onclick="toggleCard(this)">
+        <div class="card-top">
+          <div>
+            <div class="card-name-row"><span class="card-name">Bridgeport Realty Group / Gordon Realty Company</span></div>
+            <div class="card-location">Bridgeport, Chicago</div>
+            <div class="card-desc">Two additional Bridgeport real estate firms. Both serve the local market and benefit from BAC's work raising the neighborhood's cultural profile. Corporate sponsorship ($2,500) or map spot ($150) depending on company size.</div>
+          </div>
+          <div class="card-right"><span class="ask-range">$150–$2,500</span><span class="chevron">▾</span></div>
+        </div>
+        <div class="card-form">
+          <div class="form-grid">
+            <div class="form-field"><label>Owner (BAC Team Member)</label><input type="text" placeholder="Assign to..."></div>
+            <div class="form-field"><label>Contact Name</label><input type="text" placeholder="Broker / agent name"></div>
+            <div class="form-field"><label>Contact Email</label><input type="email" placeholder="email@domain.com"></div>
+            <div class="form-field"><label>Contact Phone</label><input type="tel" placeholder="(312) 000-0000"></div>
+            <div class="form-field full"><label>Notes</label><textarea placeholder="Research current active listings. Bridgeport Realty Group LLC and Gordon Realty Company — find principal contacts via Illinois license lookup at idfpr.illinois.gov."></textarea></div>
+          </div>
+          <div class="status-row"><label style="font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);">Status:</label><select class="status-select s-new" onchange="updateStatus(this)"><option value="s-new">🔘 New</option><option value="s-contacted">📧 Contacted</option><option value="s-meeting">📅 Meeting Scheduled</option><option value="s-proposal">📄 Proposal Sent</option><option value="s-committed">✅ Committed</option><option value="s-declined">❌ Declined</option></select></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════
+       CIVIC & GRANTS (NEW)
+  ════════════════════════════════════════════════ -->
+  <div class="category-section" data-category="civic">
+    <div class="category-header cat-civic" onclick="toggleSection(this)">
+      <div class="category-badge"></div>
+      <div class="category-title">🏛 Grants & Civic Funding</div>
+      <div class="category-count" id="count-civic2">— prospects</div>
+      <span class="section-chevron">▾</span>
+    </div>
+    <div class="prospect-grid">
+
+      <div class="card anchor" data-category="civic" data-id="civ-10" onclick="toggleCard(this)">
+        <div class="card-top">
+          <div>
+            <div class="card-name-row"><span class="card-name">Chicago Dept. of Cultural Affairs & Special Events (DCASE)</span><span class="anchor-tag">Grant</span></div>
+            <div class="card-location">Chicago Cultural Center, 78 E. Washington St. · chicago.gov/dcase</div>
+            <div class="card-desc">DCASE funds neighborhood arts programming across Chicago. As a registered Illinois nonprofit running a recurring monthly arts event, BAC is a strong candidate for their Community Arts Assistance Program (CAAP) and Neighborhood Arts Program grants. Clare Mensik (treasurer) should track the grant calendar.</div>
+          </div>
+          <div class="card-right"><span class="ask-range">Grant Funding</span><span class="chevron">▾</span></div>
+        </div>
+        <div class="card-form">
+          <div class="form-grid">
+            <div class="form-field"><label>Owner (BAC Team Member)</label><input type="text" placeholder="Assign to Clare Mensik"></div>
+            <div class="form-field"><label>Contact Name</label><input type="text" placeholder="Program officer"></div>
+            <div class="form-field"><label>Contact Email</label><input type="email" placeholder="dcase@cityofchicago.org"></div>
+            <div class="form-field"><label>Contact Phone</label><input type="tel" value="(312) 744-6630"></div>
+            <div class="form-field full"><label>Notes</label><textarea placeholder="CAAP (Community Arts Assistance Program) grant — open annually. Applications typically due in spring. DCASE also runs the Night Out in the Parks program — Third Friday could qualify. chicago.gov/dcase."></textarea></div>
+          </div>
+          <div class="status-row"><label style="font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);">Status:</label><select class="status-select s-new" onchange="updateStatus(this)"><option value="s-new">🔘 New</option><option value="s-contacted">📧 Contacted</option><option value="s-meeting">📅 Meeting Scheduled</option><option value="s-proposal">📄 Proposal Sent</option><option value="s-committed">✅ Committed</option><option value="s-declined">❌ Declined</option></select></div>
+        </div>
+      </div>
+
+      <div class="card" data-category="civic" data-id="civ-11" onclick="toggleCard(this)">
+        <div class="card-top">
+          <div>
+            <div class="card-name-row"><span class="card-name">Hindman Auctions</span></div>
+            <div class="card-location">1338 W. Lake St., Chicago · (312) 280-1212 · hindmanauctions.com</div>
+            <div class="card-desc">Chicago's premier fine art auction house. Hindman is deeply embedded in the Chicago arts community and regularly partners with nonprofits on benefit auctions and events. A sponsorship or benefit auction partnership with BAC would be mutually valuable — they get access to Bridgeport's artist community, BAC gets fundraising support.</div>
+          </div>
+          <div class="card-right"><span class="ask-range">$1,000–$2,500</span><span class="chevron">▾</span></div>
+        </div>
+        <div class="card-form">
+          <div class="form-grid">
+            <div class="form-field"><label>Owner (BAC Team Member)</label><input type="text" placeholder="Assign to Takako"></div>
+            <div class="form-field"><label>Contact Name</label><input type="text" placeholder="Community partnerships / specialist"></div>
+            <div class="form-field"><label>Contact Email</label><input type="email" placeholder="info@hindmanauctions.com"></div>
+            <div class="form-field"><label>Contact Phone</label><input type="tel" value="(312) 280-1212"></div>
+            <div class="form-field full"><label>Notes</label><textarea placeholder="Explore: (1) benefit auction at a Third Friday event featuring BAC artist works, (2) Hindman as presenting sponsor of an annual BAC art auction. Strong arts-world credibility for both parties."></textarea></div>
           </div>
           <div class="status-row"><label style="font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);">Status:</label><select class="status-select s-new" onchange="updateStatus(this)"><option value="s-new">🔘 New</option><option value="s-contacted">📧 Contacted</option><option value="s-meeting">📅 Meeting Scheduled</option><option value="s-proposal">📄 Proposal Sent</option><option value="s-committed">✅ Committed</option><option value="s-declined">❌ Declined</option></select></div>
         </div>
@@ -1215,11 +1854,16 @@
   </div>
 </div>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   // ── GOOGLE APPS SCRIPT WEBHOOK ──
   // Replace this URL with your own Apps Script deployment URL
-  const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/YOUR_DEPLOYMENT_URL_HERE/exec';
+  const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzntEEUy_acN3Itw8MlDtEZjDoseKBvFmC56wD8t4SSBE56ndVbq-BtGbeJDh4cqSLn/exec';
   const COLS = ['id','owner','contact_name','contact_email','contact_phone','notes','status'];
+
+  // ── TOGGLE SECTION ──
+  function toggleSection(header) {
+    header.closest('.category-section').classList.toggle('collapsed');
+  }
 
   // ── TOGGLE CARD ──
   function toggleCard(card) {
@@ -1458,6 +2102,7 @@
   }
 
   // ── INIT ──
+  document.querySelectorAll('.category-section').forEach(s => s.classList.add('collapsed'));
   loadData();
 </script>
 </body>
